@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analytics | Ecolyze</title>
+<link href="{{ url_for('static', filename='img/health/e.colifav2.png') }}" rel="icon" alt="E.Coli" title="E.Coli">
+
+<link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+<div class="sidebar" id="sidebar">
+
+  <div class="sidebar-brand">
+    <i class="fa-solid fa-dna"></i>
+    <span>Ecolyze</span>
+  </div>
+
+  
+
+  <a href="/upload" id="nav-upload">
+    <i class="fa fa-upload"></i><span>Dashboard</span>
+  </a>
+
+  <a href="/mytable" id="nav-tables">
+    <i class="fa fa-table"></i><span>Records</span>
+  </a>
+
+  <a href="/analytics" id="nav-charts" class="active">
+    <i class="fa fa-chart-bar"></i><span>Analytics</span>
+  </a>
+
+  <div class="sidebar-spacer"></div>
+  <a href="/"><i class="fa fa-globe"></i><span>Website</span></a>
+  <a href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+    <i class="fa fa-sign-out-alt"></i><span>Logout</span>
+  </a>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+<div class="main-content" id="main">
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <button class="btn btn-primary btn-sm" onclick="toggleSidebar()">
+      <i class="fa fa-bars"></i>
+    </button>
+    <span style="font-weight:600;">Analytics</span>
+  </div>
+
+  <div class="topbar-right">
+    <div class="user-badge">
+      <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
+      <span style="cursor:pointer;"
+      onclick="openEditUserFromTopbar('{{ user.id }}','{{ user.name }}','{{ user.email }}')">
+  {{ user.name }}
+</span>
+    </div>
+  </div>
+</div>
+<div class="row g-3 mb-4 mx-3">
+
+  <!-- MOST ACTIVE DAY -->
+  <div class="col-md-3" style="margin-top: 100px;">
+    <div class="info-card">
+      <i class="fa fa-calendar-alt"></i>
+      <h5>
+        {{ most_active_day.strftime('%d-%m-%Y') if most_active_day else 'N/A' }}
+      </h5>
+      <p>Most Active Day</p>
+    </div>
+  </div>
+
+  <!-- RECENT UPLOAD -->
+  <div class="col-md-3" style="margin-top: 100px;">
+    <div class="info-card">
+      <i class="fa fa-clock"></i>
+      <h5>
+        {{ last_upload.strftime('%d-%m-%Y') if last_upload else 'N/A' }}
+      </h5>
+      <p>Recent Upload</p>
+    </div>
+  </div>
+
+  <!-- DISEASE DETECTION RATE -->
+  <div class="col-md-3" style="margin-top: 100px;">
+    <div class="info-card">
+      <i class="fa fa-virus"></i>
+      <h5>
+        {{ (disease_count / predictions|length * 100) | round(1) if predictions else 0 }}%
+      </h5>
+      <p>Disease Detection Rate</p>
+    </div>
+  </div>
+
+  <!-- AVG PREDICTIONS PER DAY -->
+  <div class="col-md-3 " style="margin-top: 100px;">
+    <div class="info-card">
+      <i class="fa fa-chart-line"></i>
+      <h5>
+        {{ avg_per_day | round(1) }}
+      </h5>
+      <p>Avg Predictions / Day</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ================= CHART ================= -->
+<div class="chart-card" style="margin-left: 22px;margin-right:22px">
+
+  <h4><i class="fa fa-chart-bar me-2 text-primary"></i>Upload Analytics</h4>
+
+  <div class="chart-tabs">
+    <button class="chart-tab active" id="btnDaily" onclick="switchChart('daily')">Daily</button>
+    <button class="chart-tab" id="btnWeekly" onclick="switchChart('weekly')">Weekly</button>
+  </div>
+
+  <canvas id="analyticsChart" style="max-height:320px;"></canvas>
+
+</div>
+<div id="pageLoader">
+  <div id="dnaContainer"></div>
+</div>
+{% include 'modals.html' %}
+<footer>
+  &copy; {{ 2026 }} Ecolyze — Gene Sequence Analysis Platform
+</footer>
+
+</div>
+
+<!-- ================= LOGOUT MODAL ================= -->
+<div class="modal fade" id="logoutModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center p-4">
+      <i class="fa fa-sign-out-alt fa-2x text-primary mb-3"></i>
+      <h5 class="fw-bold">Confirm Logout</h5>
+      <p class="text-muted mb-4">Are you sure you want to logout?</p>
+      <div class="d-flex justify-content-center gap-3">
+        <a href="/logout" class="btn-logout btn">Logout</a>
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= DATA ================= -->
+<input type="hidden" id="chartData" value='{{ chart_data | tojson }}'>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/chart.js') }}"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+<script>
+  // AUTO LOAD DEFAULT CHART
+  document.addEventListener("DOMContentLoaded", function() {
+    if (typeof initAnalyticsChart === "function") {
+      initAnalyticsChart("daily");
+    }
+  });
+</script>
+
+</body>
+</html>

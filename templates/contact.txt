@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Contact - Clinic Bootstrap Template</title>
+   <meta name="description" content="Ecolyze is an AI-powered system for predicting E. coli pathogenicity using DNA sequence analysis and machine learning. Upload gene sequences and get accurate predictions instantly.">
+
+<meta name="keywords" content="Ecolyze, E coli prediction, DNA sequence analysis, AI disease prediction, bioinformatics, trimer analysis, machine learning, genomics, pathogen detection">
+
+<meta name="author" content="Ecolyze">
+<meta name="publisher" content="Ecolyze AI System">
+
+<!-- SEO -->
+<link rel="canonical" href="http://127.0.0.1:8081/">
+
+<meta name="robots" content="noindex, nofollow">
+
+  <!-- Favicons -->
+ <link href="{{ url_for('static', filename='img/health/e.colifav2.png') }}" rel="icon">
+<link href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/aos/aos.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+<link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/auth.css') }}" rel="stylesheet">
+  <!-- =======================================================
+  * Template Name: Clinic
+  * Template URL: https://bootstrapmade.com/clinic-bootstrap-template/
+  * Updated: Jul 23 2025 with Bootstrap v5.3.7
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="contact-page">
+
+  <header id="header" class="header fixed-top">
+<!-- 
+    <div class="topbar d-flex align-items-center dark-background">
+      <div class="container d-flex justify-content-center justify-content-md-between">
+        <div class="contact-info d-flex align-items-center">
+          <i class="bi bi-envelope d-flex align-items-center"><a
+              href="mailto:contact@example.com">contact@example.com</a></i>
+          <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
+        </div>
+        <div class="social-links d-none d-md-flex align-items-center">
+          <a href="#!" class="twitter"><i class="bi bi-twitter-x"></i></a>
+          <a href="#!" class="facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#!" class="instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#!" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+    </div>End Top Bar -->
+
+    <div class="branding d-flex align-items-cente">
+
+      <div class="container position-relative d-flex align-items-center justify-content-between">
+        <a href="#" class="logo d-flex align-items-center">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <!-- <img src="assets/img/logo.webp" alt=""> -->
+          <!-- <h1 class="sitename">Clinic</h1> -->
+            <img src="{{ url_for('static', filename='img/health/ecolyzelogodesign-removebg.png') }}" 
+     alt="E.coli DNA Analysis" 
+     class="img-fluid" style="height: 550px;width:190px">
+        </a>
+
+           <nav id="navmenu" class="navmenu">
+  <ul>
+    
+    <li><a href="/" >Home</a></li>
+    
+    <li><a href="/about">About Project</a></li>
+    
+    <!-- <li><a href="/predict">Prediction</a></li> -->
+    
+    <li><a href="/dataset">Dataset Info</a></li>
+    
+    <li><a href="/model">Model Details</a></li>
+    
+    <li><a href="/analysis" class="active">Genomic Analysis</a></li>
+
+  </ul>
+
+  <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+</nav>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <main class="main">
+
+  <!-- Page Title -->
+  <!-- <div class="page-title">
+    <div class="heading" style="padding: 25px;">
+      <div class="container text-center">
+        <h1 class="heading-title">User Authentication</h1>
+        <p style="margin-bottom: 0;">Login or Register to access prediction feature</p>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Auth Section -->
+ <section class="contact section" style="padding-bottom:25px;padding-top:0">
+
+  <div class="container d-flex justify-content-center align-items-center">
+
+    <div class="auth-wrapper" style="margin-top: 180px;margin-bottom:60px">
+
+      <div class="title-text">
+        <div class="title login">Login Form</div>
+        <div class="title signup">Signup Form</div>
+      </div>
+
+      <div class="form-container">
+        <div class="slide-controls">
+          <input type="radio" name="slide" id="login" checked>
+          <input type="radio" name="slide" id="signup">
+
+          <label for="login" class="slide login">Login</label>
+          <label for="signup" class="slide signup">Signup</label>
+
+          <div class="slider-tab"></div>
+        </div>
+
+        <div class="form-inner">
+
+          <!-- LOGIN -->
+          <form method="POST" action="/login" class="login">
+            <div class="field">
+              <input type="email" name="email" placeholder="Email Address" required>
+            </div>
+
+            <div class="field">
+              <input type="password" name="password" placeholder="Password" required>
+            </div>
+
+            <!-- <div class="pass-link"><a href="#">Forgot password?</a></div> -->
+
+            <div class="field btn">
+              <div class="btn-layer"></div>
+              <input type="submit" value="Login">
+            </div>
+
+            <!-- <div class="signup-link">
+              Not a member? <a href="">Signup now</a>
+            </div> -->
+          </form>
+
+          <!-- REGISTER -->
+          <form method="POST" action="/register" class="signup">
+            <div class="field">
+              <input type="text" name="name" placeholder="Full Name" required>
+            </div>
+
+            <div class="field">
+              <input type="email" name="email" placeholder="Email Address" required>
+            </div>
+
+            <div class="field">
+              <input type="password" name="password" placeholder="Password" required>
+            </div>
+
+            <div class="field btn">
+              <div class="btn-layer"></div>
+              <input type="submit" value="Signup">
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+{% if message %}
+<div id="toast" class="toast-message {{ type }}">
+  {{ message }}
+</div>
+
+<script>
+  const toast = document.getElementById("toast");
+
+  // Show toast
+  toast.style.display = "block";
+
+  // Hide after 2 seconds
+  setTimeout(() => {
+    toast.style.opacity = "0";
+    setTimeout(() => {
+      toast.style.display = "none";
+    }, 300);
+  }, 2000);
+</script>
+{% endif %}
+</main>
+
+<!-- 🔁 TOGGLE SCRIPT -->
+
+<script>
+const loginText = document.querySelector(".title-text .login");
+const loginForm = document.querySelector("form.login");
+const signupBtn = document.querySelector("label.signup");
+const loginBtn = document.querySelector("label.login");
+const signupLink = document.querySelector(".signup-link a");
+
+signupBtn.onclick = () => {
+  loginForm.style.marginLeft = "-50%";
+  loginText.style.marginLeft = "-50%";
+};
+
+loginBtn.onclick = () => {
+  loginForm.style.marginLeft = "0%";
+  loginText.style.marginLeft = "0%";
+};
+
+signupLink.onclick = () => {
+  signupBtn.click();
+  return false;
+};
+</script>
+   <footer id="footer" class="footer-16 footer position-relative">
+
+  <div class="container">
+
+    <div class="footer-main" data-aos="fade-up" data-aos-delay="100">
+      <div class="row align-items-start">
+
+        <div class="col-lg-5">
+          <div class="brand-section">
+            <a href="/" class="logo d-flex align-items-center mb-4">
+              <span class="sitename">Ecolyze</span>
+            </a>
+            <p class="brand-description">
+              AI-based system for detecting E.coli disease using DNA sequence analysis 
+              and machine learning techniques for accurate prediction and research insights.
+            </p>
+
+            <!-- <div class="contact-info mt-5">
+              <div class="contact-item">
+                <i class="bi bi-cpu"></i>
+                <span>Machine Learning Model: XGBoost</span>
+              </div>
+              <div class="contact-item">
+                <i class="bi bi-activity"></i>
+                <span>DNA Pattern & Trimer Analysis</span>
+              </div>
+              <div class="contact-item">
+                <i class="bi bi-database"></i>
+                <span>Dataset-driven Prediction System</span>
+              </div>
+            </div> -->
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="footer-nav-wrapper">
+            <div class="row">
+
+              <div class="col-6 col-lg-3">
+                <div class="nav-column">
+                  <h6>Project</h6>
+                  <nav class="footer-nav">
+                    <a href="#">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Prediction</a>
+                    <a href="#">Dataset</a>
+                    <a href="#">Results</a>
+                  </nav>
+                </div>
+              </div>
+
+              <div class="col-6 col-lg-3">
+                <div class="nav-column">
+                  <h6>Analysis</h6>
+                  <nav class="footer-nav">
+                    <a href="#">DNA Analysis</a>
+                    <a href="#">Model Details</a>
+                    <a href="#">Accuracy</a>
+                    <a href="#">Visualization</a>
+                    <a href="#">Data Info</a>
+                  </nav>
+                </div>
+              </div>
+
+              <div class="col-6 col-lg-3">
+                <div class="nav-column">
+                  <h6>Resources</h6>
+                  <nav class="footer-nav">
+                    <a href="#">E.coli Info</a>
+                    <a href="#">DNA Sequencing</a>
+                    <a href="#">AI in Healthcare</a>
+                    <a href="#">Research Papers</a>
+                    <a href="#">Documentation</a>
+                  </nav>
+                </div>
+              </div>
+
+              <div class="col-6 col-lg-3">
+                <div class="nav-column">
+                  <h6>Support</h6>
+                  <nav class="footer-nav">
+                    <a href="#">Contact</a>
+                    <a href="#">Help</a>
+                    <a href="/faq">FAQ</a>
+                    <a href="#">Guide</a>
+                    <a href="#">Feedback</a>
+                  </nav>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- <div class="footer-bottom">
+    <div class="container">
+      <div class="bottom-content" data-aos="fade-up" data-aos-delay="300">
+        <div class="row align-items-center">
+
+          <div class="col-lg-6">
+            <div class="copyright">
+              <p>© <span class="sitename">Ecolyze</span>. All rights reserved.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="legal-links">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+              <a href="#">Project Documentation</a>
+              <div class="credits">
+                Designed for Final Year Project | AI-based E.coli Prediction System
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+</footer>
+
+  <!-- Scroll Top -->
+  <a href="#!" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+  
+
+  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/aos/aos.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/glightbox/js/glightbox.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/purecounter/purecounter_vanilla.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Dataset Info | AI-Based Disease Prediction System</title>
+   <meta name="description" content="Ecolyze is an AI-powered system for predicting E. coli pathogenicity using DNA sequence analysis and machine learning. Upload gene sequences and get accurate predictions instantly.">
+
+<meta name="keywords" content="Ecolyze, E coli prediction, DNA sequence analysis, AI disease prediction, bioinformatics, trimer analysis, machine learning, genomics, pathogen detection">
+
+<meta name="author" content="Ecolyze">
+<meta name="publisher" content="Ecolyze AI System">
+
+<!-- SEO -->
+<link rel="canonical" href="http://127.0.0.1:8081/">
+
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Ecolyze | AI-Based Disease Prediction System">
+<meta property="og:description" content="AI-powered system for predicting E. coli pathogenicity using DNA sequence analysis and machine learning.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://127.0.0.1:8081/">
+
+<!-- IMPORTANT: Use full URL -->
+<meta property="og:image" content="http://127.0.0.1:8081/static/img/health/opengraphimg.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+  <!-- Favicons -->
+ <link href="{{ url_for('static', filename='img/health/e.colifav2.png') }}" rel="icon" title="E.coli">
+<link href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" rel="apple-touch-icon" title="Icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+   <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/aos/aos.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+<link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Clinic
+  * Template URL: https://bootstrapmade.com/clinic-bootstrap-template/
+  * Updated: Jul 23 2025 with Bootstrap v5.3.7
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="departments-page">
+
+  <header id="header" class="header fixed-top">
+
+    <!-- <div class="topbar d-flex align-items-center dark-background">
+      <div class="container d-flex justify-content-center justify-content-md-between">
+        <div class="contact-info d-flex align-items-center">
+          <i class="bi bi-envelope d-flex align-items-center"><a
+              href="mailto:contact@example.com">contact@example.com</a></i>
+          <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
+        </div>
+        <div class="social-links d-none d-md-flex align-items-center">
+          <a href="#!" class="twitter"><i class="bi bi-twitter-x"></i></a>
+          <a href="#!" class="facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#!" class="instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#!" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+    </div>End Top Bar -->
+
+    <div class="branding d-flex align-items-cente">
+
+      <div class="container position-relative d-flex align-items-center justify-content-between">
+        <a href="/" class="logo d-flex align-items-center" title="Ecolyze">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <!-- <img src="assets/img/logo.webp" alt=""> -->
+          <!-- <h1 class="sitename">Clinic</h1> -->
+           <img src="{{ url_for('static', filename='img/health/ecolyzelogodesign-removebg.png') }}" 
+     alt="E.coli gene Analysis" title="Ecolyze"
+     class="img-fluid" style="height: 550px;width:190px">
+        </a>
+
+     <nav id="navmenu" class="navmenu">
+  <ul>
+    
+    <li><a href="/" title="Home">Home</a></li>
+    
+    <li><a href="/about" title="About">About Project</a></li>
+    
+    <!-- <li><a href="/predict">Prediction</a></li> -->
+    
+    <li><a href="/dataset" class="active" title="Dataset Info">Dataset Info</a></li>
+    
+    <li><a href="/model" title="model details">Model Details</a></li>
+    
+    <li><a href="/analysis" title="Genomic analysis">Genomic Analysis</a></li>
+
+  </ul>
+
+  <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+</nav>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <main class="main">
+
+  <!-- Page Title -->
+  <div class="page-title pb-4">
+    <div class="heading">
+      <div class="container">
+        <div class="row d-flex justify-content-center text-center">
+          <div class="col-lg-8">
+            
+            <h1 class="heading-title">Dataset Information</h1>
+            
+            <p class="mb-0">
+              This section provides details about the gene sequence dataset used for 
+              E.coli disease prediction. The dataset consists of genomic sequences 
+              processed using trimer (3-mer) analysis and machine learning techniques 
+              to identify patterns and predict disease outcomes.
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumbs">
+      <div class="container">
+        <ol>
+          <li><a href="#" title="Home">Home</a></li>
+          <li class="current">Dataset</li>
+        </ol>
+      </div>
+    </nav>
+  </div><!-- End Page Title -->
+
+    <!-- Departments Tabs Section -->
+   
+
+<!-- ================= DATASET TABS SECTION ================= -->
+<section id="departments-tabs" class="departments-tabs section p-0">
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="medical-specialties">
+      <div class="row">
+        <div class="col-12">
+          <div class="specialty-navigation">
+            <div class="nav nav-pills d-flex" id="specialty-tabs" role="tablist">
+
+              <a class="nav-link department-tab active" data-bs-toggle="pill" href="#tab-overview" title="Overview">Overview</a>
+              <a class="nav-link department-tab" data-bs-toggle="pill" href="#tab-collection" title="Collection">Collection</a>
+              <a class="nav-link department-tab" data-bs-toggle="pill" href="#tab-features" title="Features">Features</a>
+              <a class="nav-link department-tab" data-bs-toggle="pill" href="#tab-preprocessing" title="Preprocessing">Preprocessing</a>
+              <a class="nav-link department-tab" data-bs-toggle="pill" href="#tab-split" title="Data split">Data Split</a>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="tab-content department-content mb-5">
+
+            <!-- Overview -->
+            <div class="tab-pane fade show active" id="tab-overview">
+              <div class="row department-layout">
+                <div class="col-lg-4 order-lg-2">
+                  <img src="{{ url_for('static', filename='img/health/genesequences1.png') }}" class="img-fluid" title="Gene Sequences" alt="Gene Sequences">
+                </div>
+                <div class="col-lg-8 order-lg-1">
+                  <h2 class="department-title">Dataset Overview</h2>
+                  <p class="department-description">
+                    This dataset contains E.coli gene sequences used for disease prediction. 
+                    Each sequence is analyzed using trimer (3-mer) patterns to identify biological signals.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Collection -->
+            <div class="tab-pane fade" id="tab-collection">
+              <div class="row department-layout">
+                <div class="col-lg-4 order-lg-2">
+                  <img src="{{ url_for('static', filename='img/health/datsetsource.png') }}" class="img-fluid" title="Dataset" alt="Dataset">
+                </div>
+                <div class="col-lg-8 order-lg-1">
+                  <h3 class="department-title h2">Data Collection</h3>
+                  <p class="department-description">
+                    Gene sequences are collected from biological sources such as NCBI databases. 
+                    Files are stored in .fna format for processing.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Features -->
+            <div class="tab-pane fade" id="tab-features">
+              <div class="row department-layout">
+                <div class="col-lg-4 order-lg-2">
+                  <img src="{{ url_for('static', filename='img/health/datasetimgfeat.png') }}" class="img-fluid" title="feature Extraction" alt="feature Extraction">
+                </div>
+                <div class="col-lg-8 order-lg-1">
+                  <h3 class="department-title h2">Feature Extraction</h3>
+                  <p class="department-description">
+                    Trimer frequency features are extracted from gene sequences to convert biological data 
+                    into numerical format for machine learning models.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Preprocessing -->
+            <div class="tab-pane fade" id="tab-preprocessing">
+              <div class="row department-layout">
+                <div class="col-lg-4 order-lg-2">
+                  <img src="{{ url_for('static', filename='img/health/modifiedimg.png') }}" class="img-fluid" title="Preprocessing" alt="Preprocessing">
+                </div>
+                <div class="col-lg-8 order-lg-1">
+                  <h3 class="department-title h2">Data Preprocessing</h3>
+                  <p class="department-description">
+                    Data is cleaned and normalized using scaling techniques to improve model accuracy 
+                    and ensure consistency.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Split -->
+            <div class="tab-pane fade" id="tab-split">
+              <div class="row department-layout">
+                <div class="col-lg-4 order-lg-2">
+                  <img src="{{ url_for('static', filename='img/health/prediction1.png') }}" class="img-fluid" title="Prediction" alt="Prediction">
+                </div>
+                <div class="col-lg-8 order-lg-1">
+                  <h3 class="department-title h2">Train-Test Split</h3>
+                  <p class="department-description">
+                    The dataset is divided into training and testing sets to evaluate model performance 
+                    and prediction accuracy.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= DATASET CARDS SECTION ================= -->
+<section id="departments" class="departments section pt-0">
+
+  <div class="container">
+
+    <div class="row g-3 mt-0">
+
+      <div class="col-lg-4 col-md-6">
+        <div class="department-card">
+          <div class="department-icon"><i class="fas fa-dna"></i></div>
+          <div class="department-image">
+            <img src="{{ url_for('static', filename='img/health/genesequences1.png') }}" class="img-fluid" title="Gene Sequences" alt="Gene Sequences">
+          </div>
+          <div class="department-content">
+            <h3>Gene Sequences</h3>
+            <p>Gene sequences used for analysis and prediction.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="department-card">
+          <div class="department-icon"><i class="fas fa-database"></i></div>
+          <div class="department-image">
+            <img src="{{ url_for('static', filename='img/health/datsetsource.png') }}" class="img-fluid" title="Dataset" alt="Dataset">
+          </div>
+          <div class="department-content">
+            <h3>Dataset Source</h3>
+            <p>Data collected from biological databases like NCBI.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="department-card">
+          <div class="department-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="department-image">
+            <img src="{{ url_for('static', filename='img/health/datasetimgfeat.png') }}" class="img-fluid" title="Feature Extraction" alt="Feature Extraction">
+          </div>
+          <div class="department-content">
+            <h3>Feature Engineering</h3>
+            <p>Trimer frequency extraction for model training.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="department-card">
+          <div class="department-icon"><i class="fas fa-cogs"></i></div>
+          <div class="department-image">
+            <img src="{{ url_for('static', filename='img/health/modifiedimg.png') }}" class="img-fluid" title="Preprocessing" alt="Preprocessing">
+          </div>
+          <div class="department-content">
+            <h3>Preprocessing</h3>
+            <p>Scaling and normalization of dataset.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="department-card">
+          <div class="department-icon"><i class="fas fa-brain"></i></div>
+          <div class="department-image">
+            <img src="{{ url_for('static', filename='img/health/training1.png') }}" class="img-fluid" title="Model" alt="Model">
+          </div>
+          <div class="department-content">
+            <h3>Model Training</h3>
+            <p>Training machine learning models for prediction.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="department-card">
+          <div class="department-icon"><i class="fas fa-flask"></i></div>
+          <div class="department-image">
+            <img src="{{ url_for('static', filename='img/health/prediction1.png') }}" class="img-fluid" alt="Prediction"    title="Prediction">
+          </div>
+          <div class="department-content">
+            <h3>Prediction</h3>
+            <p>Final disease prediction based on gene input.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+  <footer id="footer" class="footer-16 footer position-relative">
+
+  <div class="container">
+
+    <div class="footer-main" data-aos="fade-up" data-aos-delay="100">
+      <div class="row align-items-start">
+
+        <div class="col-lg-5">
+          <div class="brand-section">
+            <a href="#" class="logo d-flex align-items-center mb-4" title="Ecolyze">
+              <span class="sitename">Ecolyze</span>
+            </a>
+            <p class="brand-description">
+              AI-based system for detecting E.coli disease using gene sequence analysis 
+              and machine learning techniques for accurate prediction and research insights.
+            </p>
+
+            <!-- <div class="contact-info mt-5">
+              <div class="contact-item">
+                <i class="bi bi-cpu"></i>
+                <span>Machine Learning Model: XGBoost</span>
+              </div>
+              <div class="contact-item">
+                <i class="bi bi-activity"></i>
+                <span>Gene Pattern & Trimer Analysis</span>
+              </div>
+              <div class="contact-item">
+                <i class="bi bi-database"></i>
+                <span>Dataset-driven Prediction System</span>
+              </div>
+            </div> -->
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="footer-nav-wrapper">
+            <div class="row">
+
+              <div class="col-6 col-lg-3">
+                <div class="nav-column">
+                  <h6>Project</h6>
+                  <nav class="footer-nav">
+                    <a href="#" title="Home">Home</a>
+                    <a href="#" title="About">About</a>
+                    <a href="#" title="Prediction">Prediction</a>
+                    <a href="#" title="Dataset">Dataset</a>
+                    <a href="#" title="Results">Results</a>
+                  </nav>
+                </div>
+              </div>
+
+              <div class="col-6 col-lg-3">
+                <div class="nav-column">
+                  <h6>Analysis</h6>
+                  <nav class="footer-nav">
+                    <a href="#" title="Gene Analysis">Gene Analysis</a>
+                    <a href="#" title="Model Details">Model Details</a>
+                    <a href="#" title="Accuracy">Accuracy</a>
+                    <a href="#" title="Visulaization">Visualization</a>
+                    <a href="#" title="Data Info">Data Info</a>
+                  </nav>
+                </div>
+              </div>
+
+              <div class="col-6 col-lg-3">
+                <div class="nav-column">
+                  <h6>Resources</h6>
+                  <nav class="footer-nav">
+                    <a href="#" title="E.coli Info">E.coli Info</a>
+                    <a href="#" title="Gene Sequencing">Gene Sequencing</a>
+                    <a href="#" title="AI in Healthcare">AI in Healthcare</a>
+                    <a href="#" title="Research Papers">Research Papers</a>
+                    <a href="#" title="Documentation">Documentation</a>
+                  </nav>
+                </div>
+              </div>
+
+              <div class="col-6 col-lg-3">
+                <div class="nav-column">
+                  <h6>Support</h6>
+                  <nav class="footer-nav">
+                    <a href="#" title="Contact">Contact</a>
+                    <a href="#" title="Help">Help</a>
+                    <a href="/faq" title="FAQ">FAQ</a>
+                    <a href="#" title="Guide">Guide</a>
+                    <a href="#" title="Feedback">Feedback</a>
+                  </nav>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- <div class="footer-bottom">
+    <div class="container">
+      <div class="bottom-content" data-aos="fade-up" data-aos-delay="300">
+        <div class="row align-items-center">
+
+          <div class="col-lg-6">
+            <div class="copyright">
+              <p>© <span class="sitename">Ecolyze</span>. All rights reserved.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="legal-links">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+              <a href="#">Project Documentation</a>
+              <div class="credits">
+                Designed for Final Year Project | AI-based E.coli Disease Prediction System
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+</footer>
+
+  <!-- Scroll Top -->
+  <a href="#!" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" title="Scroll"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/aos/aos.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/glightbox/js/glightbox.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/purecounter/purecounter_vanilla.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Ecolyze | AI-Based Disease Prediction System</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+<!-- Favicons -->
+<link href="{{ url_for('static', filename='img/health/e.colifav2.png') }}" rel="icon">
+<link href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/aos/aos.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+<link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+</head>
+
+<body class="faq-page">
+
+  <header id="header" class="header fixed-top">
+
+    <!-- End Top Bar -->
+
+    <div class="branding d-flex align-items-cente">
+
+      <div class="container position-relative d-flex align-items-center justify-content-between">
+        <a href="/" class="logo d-flex align-items-center">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <!-- <img src="assets/img/logo.webp" alt=""> -->
+          <img src="{{ url_for('static', filename='img/health/ecolyzelogodesign-removebg.png') }}" 
+     alt="E.coli DNA Analysis" 
+     class="img-fluid" style="height: 550px;width:190px">
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+  <ul>
+    
+    <li><a href="/" class="active">Home</a></li>
+    
+    <li><a href="/about">About Project</a></li>
+    
+    <!-- <li><a href="/predict">Prediction</a></li> -->
+    
+    <li><a href="/dataset">Dataset Info</a></li>
+    
+    <li><a href="/model">Model Details</a></li>
+    
+    <li><a href="/analysis" >Genomic Analysis</a></li>
+
+  </ul>
+
+  <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+</nav>
+
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title pb-4">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1 class="heading-title">Frequenty Asked Questions</h1>
+              <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec
+                ullamcorper mattis, pulvinar dapibus leo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="breadcrumbs">
+        <div class="container">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Faq</li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <!-- Faq Section -->
+    <section id="faq" class="faq section pt-0">
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+
+        <div class="faq-wrapper">
+
+          <div class="faq-item faq-active" data-aos="fade-up" data-aos-delay="150">
+            <div class="faq-header">
+              <span class="faq-number">01</span>
+              <h4>What is the purpose of this E.coli DNA Analysis system?</h4>
+              <div class="faq-toggle">
+                <i class="bi bi-plus"></i>
+                <i class="bi bi-dash"></i>
+              </div>
+            </div>
+            <div class="faq-content">
+              <div class="content-inner">
+                <p>This system uses Artificial Intelligence to analyze E.coli DNA sequences and predict whether a given gene is associated with a disease or not. It helps researchers and students quickly identify patterns without manual analysis.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="faq-header">
+              <span class="faq-number">02</span>
+              <h4>What type of file should I upload for analysis?</h4>
+              <div class="faq-toggle">
+                <i class="bi bi-plus"></i>
+                <i class="bi bi-dash"></i>
+              </div>
+            </div>
+            <div class="faq-content">
+              <div class="content-inner">
+                <p>You need to upload a DNA sequence file in <b>.fna (FASTA nucleotide)</b> format. This format is commonly available from biological databases like NCBI.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-aos="fade-up" data-aos-delay="250">
+            <div class="faq-header">
+              <span class="faq-number">03</span>
+              <h4>How does the prediction model work?</h4>
+              <div class="faq-toggle">
+                <i class="bi bi-plus"></i>
+                <i class="bi bi-dash"></i>
+              </div>
+            </div>
+            <div class="faq-content">
+              <div class="content-inner">
+                <p>The system extracts trimer (3-letter nucleotide) frequencies from the DNA sequence and feeds them into a trained machine learning model. Based on learned patterns, the model predicts whether the gene is classified as <b>Disease</b> or <b>Normal</b>.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="faq-header">
+              <span class="faq-number">04</span>
+              <h4>Can I view and manage my previous predictions?</h4>
+              <div class="faq-toggle">
+                <i class="bi bi-plus"></i>
+                <i class="bi bi-dash"></i>
+              </div>
+            </div>
+            <div class="faq-content">
+              <div class="content-inner">
+                <p>Yes, all your predictions are stored securely. You can view them in the <b>My Data</b> section, edit gene names, or delete records anytime. This helps in tracking and managing your analysis history.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-aos="fade-up" data-aos-delay="350">
+            <div class="faq-header">
+              <span class="faq-number">05</span>
+              <h4>Is the prediction result 100% accurate?</h4>
+              <div class="faq-toggle">
+                <i class="bi bi-plus"></i>
+                <i class="bi bi-dash"></i>
+              </div>
+            </div>
+            <div class="faq-content">
+              <div class="content-inner">
+                <p>No prediction model is 100% accurate. The results are based on trained data and statistical patterns. This system is intended for educational and research purposes, and results should be validated with biological experiments for critical applications.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</section><!-- /Faq Section -->
+
+  </main>
+
+  <footer id="footer" class="footer-16 footer position-relative">
+
+  <div class="container">
+
+    <div class="footer-main" data-aos="fade-up" data-aos-delay="100">
+      <div class="row align-items-start">
+
+        <div class="col-lg-5">
+          <div class="brand-section">
+            <a href="#" class="logo d-flex align-items-center mb-4">
+              <span class="sitename">Ecolyze</span>
+            </a>
+            <p class="brand-description">
+              AI-based system for detecting E.coli disease using DNA sequence analysis 
+              and machine learning techniques for accurate prediction and research insights.
+            </p>
+
+            <!-- <div class="contact-info mt-5">
+              <div class="contact-item">
+                <i class="bi bi-cpu"></i>
+                <span>Machine Learning Model: XGBoost</span>
+              </div>
+              <div class="contact-item">
+                <i class="bi bi-activity"></i>
+                <span>DNA Pattern & Trimer Analysis</span>
+              </div>
+              <div class="contact-item">
+                <i class="bi bi-database"></i>
+                <span>Dataset-driven Prediction System</span>
+              </div>
+            </div> -->
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="footer-nav-wrapper">
+            <div class="row">
+
+              <div class="col-6 col-lg-3">
+                <div class="nav-column">
+                  <h6>Project</h6>
+                  <nav class="footer-nav">
+                    <a href="#">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Prediction</a>
+                    <a href="#">Dataset</a>
+                    <a href="#">Results</a>
+                  </nav>
+                </div>
+              </div>
+
+              <div class="col-6 col-lg-3">
+                <div class="nav-column">
+                  <h6>Analysis</h6>
+                  <nav class="footer-nav">
+                    <a href="#">DNA Analysis</a>
+                    <a href="#">Model Details</a>
+                    <a href="#">Accuracy</a>
+                    <a href="#">Visualization</a>
+                    <a href="#">Data Info</a>
+                  </nav>
+                </div>
+              </div>
+
+              <div class="col-6 col-lg-3">
+                <div class="nav-column">
+                  <h6>Resources</h6>
+                  <nav class="footer-nav">
+                    <a href="#">E.coli Info</a>
+                    <a href="#">DNA Sequencing</a>
+                    <a href="#">AI in Healthcare</a>
+                    <a href="#">Research Papers</a>
+                    <a href="#">Documentation</a>
+                  </nav>
+                </div>
+              </div>
+
+              <div class="col-6 col-lg-3">
+                <div class="nav-column">
+                  <h6>Support</h6>
+                  <nav class="footer-nav">
+                    <a href="#">Contact</a>
+                    <a href="#">Help</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Guide</a>
+                    <a href="#">Feedback</a>
+                  </nav>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- <div class="footer-bottom">
+    <div class="container">
+      <div class="bottom-content" data-aos="fade-up" data-aos-delay="300">
+        <div class="row align-items-center">
+
+          <div class="col-lg-6">
+            <div class="copyright">
+              <p>© <span class="sitename">Ecolyze</span>. All rights reserved.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="legal-links">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+              <a href="#">Project Documentation</a>
+              <div class="credits">
+                Designed for Final Year Project | AI-based E.coli Prediction System
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+</footer>
+
+  <!-- Scroll Top -->
+  <a href="#!" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+ 
+
+  <!-- Vendor JS Files -->
+ <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/aos/aos.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/glightbox/js/glightbox.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/purecounter/purecounter_vanilla.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+
+</html>
