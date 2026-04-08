@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Ecolyze | AI-Based Disease Prediction System</title>
+  <meta name="description" content="Ecolyze is an AI-powered system for predicting E. coli pathogenicity using DNA sequence analysis and machine learning. Upload gene sequences and get accurate predictions instantly.">
+
+<meta name="keywords" content="Ecolyze, E coli prediction, DNA sequence analysis, AI disease prediction, bioinformatics, trimer analysis, machine learning, genomics, pathogen detection">
+
+<meta name="author" content="Ecolyze">
+<meta name="publisher" content="Ecolyze AI System">
+
+<!-- SEO -->
+<link rel="canonical" href="http://127.0.0.1:8081/">
+
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Ecolyze | AI-Based Disease Prediction System">
+<meta property="og:description" content="AI-powered system for predicting E. coli pathogenicity using DNA sequence analysis and machine learning.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://127.0.0.1:8081/">
+
+<!-- IMPORTANT: Use full URL -->
+<meta property="og:image" content="http://127.0.0.1:8081/static/img/health/opengraphimg.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+  <!-- Favicons -->
+<!-- Favicons -->
+<link href="{{ url_for('static', filename='img/health/e.colifav2.png') }}" rel="icon" alt="E.Coli" title="E.Coli">
+<link href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" rel="apple-touch-icon" alt="Icon" title="Icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/aos/aos.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+<link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Clinic
+  * Template URL: https://bootstrapmade.com/clinic-bootstrap-template/
+  * Updated: Jul 23 2025 with Bootstrap v5.3.7
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+<style>
+  .info-lines {
+  margin-top: 15px;
+}
+
+.info-line {
+  background: #f5f9ff;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+/* left accent */
+.info-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: #1760bd;
+  border-radius: 8px 0 0 8px;
+}
+
+/* hover effect */
+.info-line:hover {
+  background: #eaf2ff;
+  transform: translateX(5px);
+}</style>
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header fixed-top">
+
+    <!-- <div class="topbar d-flex align-items-center dark-background">
+      <div class="container d-flex justify-content-center justify-content-md-between">
+        <div class="contact-info d-flex align-items-center">
+          <i class="bi bi-envelope d-flex align-items-center"><a
+              href="mailto:contact@example.com">contact@example.com</a></i>
+          <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
+        </div>
+        <div class="social-links d-none d-md-flex align-items-center">
+          <a href="#!" class="twitter"><i class="bi bi-twitter-x"></i></a>
+          <a href="#!" class="facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#!" class="instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#!" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+    </div>End Top Bar -->
+
+    <div class="branding d-flex align-items-cente">
+
+      <div class="container position-relative d-flex align-items-center justify-content-between">
+        <a href="/" class="logo d-flex align-items-center" title="Logo">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <img src="{{ url_for('static', filename='img/health/ecolyzelogodesign-removebg.png') }}" 
+     alt="E.coli DNA Analysis" title="Ecolyze"
+     class="img-fluid" style="height: 550px;width:190px">
+          <!-- <h1 class="sitename">Ecolyze</h1> -->
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+  <ul>
+    
+    <li><a href="/" class="active" title="Home">Home</a></li>
+    
+    <li><a href="/about" title="About">About Project</a></li>
+    
+    <!-- <li><a href="/predict">Prediction</a></li> -->
+    
+    <li><a href="/dataset" title="Dataset">Dataset Info</a></li>
+    
+    <li><a href="/model" title="Model">Model Details</a></li>
+    
+    <li><a href="/analysis" title="analysis" >Genomic Analysis</a></li>
+
+  </ul>
+
+  <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+</nav>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <div class="hero-content">
+              <!-- <div class="trust-badges mb-4" data-aos="fade-right" data-aos-delay="200">
+                <div class="badge-item">
+                  <i class="bi bi-gear-fill"></i>
+                  <span>AI-Powered</span>
+                </div>
+                <div class="badge-item">
+                  <i class="bi bi-file-earmark-text"></i>
+                  <span>.fna File Support</span>
+                </div>
+                <div class="badge-item">
+                   <i class="bi bi-bar-chart-line"></i>
+                  <span>High Accuracy</span>
+                </div>
+              </div> -->
+
+              <h1 data-aos="fade-right" data-aos-delay="300">
+              
+                  AI-Powered <span class="highlight">Pathogenic E.coli Detection</span> from Gene Sequences
+            
+              </h1>
+
+              <h2 class="hero-description p" data-aos="fade-right" data-aos-delay="400">
+                Upload your sequence in <strong>.fna format</strong> and our AI model will analyze codon patterns to predict the presence of E.coli with high accuracy.
+              </h2>
+
+              <div class="hero-stats mb-4" data-aos="fade-right" data-aos-delay="500">
+             <div class="stat-item">
+  <h3><span data-purecounter-start="0" data-purecounter-end="5000" class="purecounter"></span>+</h3>
+  <p>Total Sequences Processed</p>
+</div>
+<div class="stat-item">
+  <h3><span data-purecounter-start="0" data-purecounter-end="1200" class="purecounter"></span>+</h3>
+  <p>Total Predictions</p>
+</div>
+<div class="stat-item">
+  <h3><span data-purecounter-start="0" data-purecounter-end="95" class="purecounter"></span>%</h3>
+  <p>Model Accuracy</p>
+</div>
+              </div>
+
+              <div class="hero-actions" data-aos="fade-right" data-aos-delay="600">
+                <a href="/analysis" class="btn btn-primary" title="Upload Sequence">Upload Sequence</a>
+                <a href="#" class="btn btn-outline" title="Watch our story">
+                  <i class="bi bi-play-circle me-2"></i>
+                  Watch Our Story
+                </a>
+              </div>
+
+              <div class="emergency-contact" data-aos="fade-right" data-aos-delay="700">
+                <div class="emergency-icon">
+                  <i class="bi bi-telephone-fill"></i>
+                </div>
+                <div class="emergency-info">
+                  <small>Project Support</small>
+                  <strong>support@gmail.com</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="hero-visual" data-aos="fade-left" data-aos-delay="400">
+              <div class="main-image">
+                <img src="{{ url_for('static', filename='img/health/indeximg1.png') }}" 
+     alt="E.coli Analysis" title="E.coli Analysis"
+     class="img-fluid">
+                <div class="floating-card appointment-card">
+                  <div class="card-icon">
+                    <i class="bi bi-graph-up"></i>
+                  </div>
+                  <div class="card-content">
+                    <h6>Sample Prediction</h6>
+                    <p>Gene Sequence #12 -> Normal</p>
+                    <!-- <small>Dr. Sarah Johnson</small> -->
+                  </div>
+                </div>
+                <div class="floating-card rating-card">
+                  <div class="card-content">
+                    <div class="rating-stars">
+                      <!-- <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i> -->
+                      <i class="bi bi-bar-chart-line"></i>
+                    </div>
+                    <h6>Modal Accuracy</h6>
+                    <small>95% on Test Data</small>
+                  </div>
+                </div>
+              </div>
+              <div class="background-elements">
+                <div class="element element-1"></div>
+                <div class="element element-2"></div>
+                <div class="element element-3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- Home About Section -->
+    <section id="home-about" class="home-about section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right" data-aos-delay="200">
+            <div class="about-content">
+           <p class="section-heading h2">Accurate <span class="highlight">E.coli Disease Analysis</span> with AI</p>
+              <p class="lead-text">Our AI-based platform analyzes E.coli gene sequences to predict pathogenic patterns with high accuracy, providing researchers and clinicians with actionable insights.</p>
+
+            <p>Using state-of-the-art machine learning algorithms, our system identifies pathogenic E.coli strains from gene sequences. The platform ensures precise, reliable, and fast predictions for research, diagnostics, or educational purposes.</p>
+
+              <div class="stats-grid">
+            <div class="stat-item">
+  <div class="stat-number purecounter" data-purecounter-end="1000"></div>
+  <div class="stat-label">Sequences Analyzed</div>
+</div>
+<div class="stat-item">
+  <div class="stat-number purecounter" data-purecounter-end="95"></div>
+  <div class="stat-label">Prediction Accuracy (%)</div>
+</div>
+<div class="stat-item">
+  <div class="stat-number purecounter" data-purecounter-end="50"></div>
+  <div class="stat-label">E.coli Strains Covered</div>
+</div>
+              </div>
+
+              <div class="cta-section" style="padding: 0;">
+                <a href="/analysis" class="btn-primary" title="Upload Gene Sequence">Upload Gene Sequence</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
+            <div class="about-visual">
+              <div class="main-image">
+                <img src="{{ url_for('static', filename='img/health/computationalanalysis.webp') }}" 
+     alt="E.coli Disease Analysis" title="E.coli analysis"
+     class="img-fluid">
+              </div>
+              <div class="floating-card">
+                <div class="card-content">
+                  <div class="icon">
+                    <i class="bi bi-heart-pulse"></i>
+                  </div>
+                  <div class="card-text">
+                    <h4>AI-Powered Predictions</h4>
+                    <p>Fast and accurate sequence analysis</p>
+                  </div>
+                </div>
+              </div>
+              <div class="experience-badge">
+                <div class="badge-content">
+                  <span class="years">95%</span>
+                  <span class="text">Prediction Accuracy</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Home About Section -->
+   <section class="ecoli-info section pt-3 pb-5">
+  <div class="container">
+    
+    <div class="section-title text-center">
+      <h3>E. coli & Gene Analysis</h3>
+      <p>Learn the biological background and data sources behind our AI-powered prediction system.</p>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Card 1 -->
+      <div class="col-md-6">
+        <div class="info-card">
+
+          <h5 style="padding-bottom: 12px;">
+            <span class="icon-box">
+              <i class="bi bi-virus"></i>
+            </span>
+            What is E.coli?
+          </h5>
+
+          <!-- <small class="text-muted">Biological Overview</small> -->
+
+          <div class="info-lines">
+  <div class="info-line">These bacteria are naturally found in the human intestinal tract and are an essential part of the gut microbiome.</div>
+  <div class="info-line">The majority of these bacterial strains are harmless and even play a beneficial role in digestion and maintaining overall gut health.</div>
+  <div class="info-line">However, certain strains can become harmful and may lead to serious infections, especially under specific conditions.</div>
+</div>
+
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-md-6">
+        <div class="info-card">
+          <h5 style="padding-bottom: 12px;">
+            <span class="icon-box">
+              <i class="bi bi-database"></i>
+            </span>
+            Computational Data Collection
+          </h5>
+
+          <div class="info-lines">
+  <div class="info-line">The dataset used in this project is sourced from the NCBI (National Center for Biotechnology Information) database, which provides reliable and well-curated biological data.</div>
+  <div class="info-line">The genomic data was downloaded in FASTA (.fna) format, a standard file format used for representing nucleotide sequences.</div>
+  <div class="info-line">This data is utilized for training and testing the AI model to ensure accurate analysis and prediction of biological patterns.</div>
+</div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-6">
+        <div class="info-card">
+          <h5 style="padding-bottom: 12px;">
+            <span class="icon-box">
+              <i class="bi bi-beaker"></i>
+            </span>
+            Real-Time Data Collection
+          </h5>
+
+          <div class="info-lines">
+  <div class="info-line">DNA is carefully extracted from biological samples using standardized laboratory procedures to ensure purity and accuracy.</div>
+  <div class="info-line">The extracted DNA is amplified using PCR tools and laboratory techniques to generate sufficient quantities for sequencing and further analysis.</div>
+  <div class="info-line">Finally, the amplified DNA is sequenced and stored in FASTA format, which allows easy access and processing for computational analysis.</div>
+</div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-md-6">
+        <div class="info-card">
+          <h5 style="padding-bottom: 12px;">
+            <span class="icon-box">
+              <i class="bi bi-graph-up"></i>
+            </span>
+            Importance of Sequence Analysis
+          </h5>
+
+         <div class="info-lines">
+  <div class="info-line">The system identifies specific gene patterns associated with pathogenic organisms, helping to distinguish harmful sequences from non-harmful ones.</div>
+  <div class="info-line">It supports early and accurate disease prediction by analyzing genetic data and detecting potential risk factors.</div>
+  <div class="info-line">The processed data enables efficient AI-based classification, allowing the model to categorize and interpret genetic sequences effectively.</div>
+</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+    <!-- Featured Departments Section -->
+   <section id="featured-departments" class="featured-departments section pt-0">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h3 style="font-weight: 500;">Key Features of Our E.coli Analysis</h3>
+    <p>Explore the core capabilities of our AI-based Disease prediction platform for pathogenic E.coli detection.</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row g-5">
+
+      <!-- Card 1: Pathogenic E.coli Detection -->
+      <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="100">
+        <div class="specialty-card">
+          <div class="specialty-content">
+            <div class="specialty-meta">
+              <span class="specialty-label">Core Feature</span>
+            </div>
+            <h3>Pathogenic E.coli Detection</h3>
+            <p>AI-powered detection of pathogenic E.coli strains from uploaded gene sequences, delivering accurate predictions in minutes.</p>
+            <div class="specialty-features">
+              <span><i class="bi bi-check-circle-fill"></i>High Prediction Accuracy</span>
+              <span><i class="bi bi-check-circle-fill"></i>Supports .fna File Uploads</span>
+            </div>
+            <a href="/analysis" class="specialty-link" title="Upload Gene Sequence">
+              Upload Gene Sequence <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+          <div class="specialty-visual">
+            <img src="{{ url_for('static', filename='img/health/homeimg1.png') }}" alt="E.coli Detection" class="img-fluid" title="E.coli detection">
+            <div class="visual-overlay">
+              <i class="fa-solid fa-dna"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Trimer Analysis -->
+      <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
+        <div class="specialty-card">
+          <div class="specialty-content">
+            <div class="specialty-meta">
+              <span class="specialty-label">AI Analysis</span>
+            </div>
+            <h3>Trimer Analysis</h3>
+            <p>Computes 3-mer frequencies from gene sequences to identify potential pathogenic patterns with precision.</p>
+            <div class="specialty-features">
+              <span><i class="bi bi-check-circle-fill"></i>Fast Computation</span>
+              <span><i class="bi bi-check-circle-fill"></i>Normalized Feature Extraction</span>
+            </div>
+            <a href="#" class="specialty-link" title="Trimer Analysis">
+              Try Trimer Analysis <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+          <div class="specialty-visual">
+            <img src="{{ url_for('static', filename='img/health/homeimg2.png') }}" alt="Trimer Analysis" class="img-fluid" title="Trimer analysis">
+            <div class="visual-overlay">
+              <i class="bi bi-bar-chart-line"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Highlight Card 1: Model Accuracy -->
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="department-highlight">
+          <div class="highlight-icon">
+            <i class="bi bi-award"></i>
+          </div>
+          <h4>Model Accuracy</h4>
+          <p>Our AI model achieves over 95% accuracy across multiple pathogenic E.coli strains.</p>
+          <ul class="highlight-list">
+            <li>High Confidence Predictions</li>
+            <li>Validated on Multiple Strains</li>
+            <li>Consistent Results</li>
+          </ul>
+          <a href="#appointment" class="highlight-cta" title="Learn More">Learn More</a>
+        </div>
+      </div>
+
+      <!-- Highlight Card 2: Batch Analysis -->
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="department-highlight">
+          <div class="highlight-icon">
+            <i class="bi bi-folder-check"></i>
+          </div>
+          <h4>Sequence Analysis</h4>
+          <p>Upload gene sequences at once and receive predictions in a single batch run.</p>
+          <ul class="highlight-list">
+            <li>File Uploads</li>
+            <li>Time-efficient</li>
+            <li>Scalable Analysis</li>
+          </ul>
+          <a href="/analysis" class="highlight-cta" title="Upload Sequence">Upload Sequences</a>
+        </div>
+      </div>
+
+      <!-- Highlight Card 3: Research & Education -->
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="department-highlight">
+          <div class="highlight-icon">
+            <i class="bi bi-book"></i>
+          </div>
+          <h4>Research Support</h4>
+          <p>Designed for educational and research purposes, enabling studies on E.coli pathogenicity and patterns.</p>
+          <ul class="highlight-list">
+            <li>Data Analysis</li>
+            <li>Visual Insights</li>
+            <li>Educational Tool</li>
+          </ul>
+          <a href="#" class="highlight-cta" title="Explore platform">Explore Platform</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA Banner -->
+    <div class="emergency-banner" data-aos="fade-up" data-aos-delay="400">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <div class="emergency-content">
+            <h3>Reliable Predictions Anytime</h3>
+            <p>Our AI model provides rapid and accurate predictions for E.coli gene sequences, ensuring actionable insights for labs and researchers.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+          <a href="/analysis" class="emergency-btn" title="Upload Sequence">
+            <i class="bi bi-upload"></i>
+            Upload Your Sequence Now
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section><!-- /Featured Departments Section -->
+
+    <!-- Featured Services Section -->
+   <section id="featured-services" class="featured-services section pt-0">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h3>Core Services</h3>
+    <p>Explore the main capabilities of our AI-powered E.coli Disease prediction platform.</p>
+  </div><!-- End Section Title -->
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row g-0">
+
+      <!-- Main Service Card -->
+      <div class="col-lg-8" data-aos="fade-right" data-aos-delay="200">
+        <div class="featured-service-main">
+          <div class="service-image-wrapper">
+            <img src="{{ url_for('static', filename='img/health/discussion.png') }}" 
+                 alt="AI Analysis" class="img-fluid" loading="lazy" title="AI analysis">
+            <div class="service-overlay">
+              <div class="service-badge">
+                <i class="bi bi-lightning-charge-fill"></i>
+                <span>Rapid Prediction</span>
+              </div>
+            </div>
+          </div>
+          <div class="service-details">
+            <h3>AI-Based E.coli Disease Prediction Analysis</h3>
+            <p>Upload your gene sequences in <strong>.fna</strong> format and receive accurate predictions for pathogenic E.coli within minutes. Our AI platform performs 3-mer feature extraction, normalization, and predictive modeling automatically.</p>
+            <a href="#" class="main-cta" title="Upload Sequence">Upload Your Sequence</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Service Cards -->
+      <div class="col-lg-4" data-aos="fade-left" data-aos-delay="300">
+        <div class="services-sidebar">
+
+          <div class="service-item" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-icon-wrapper">
+              <i class="fas fa-dna"></i>
+            </div>
+            <div class="service-info">
+              <h4>Sequence Upload</h4>
+              <p>Upload individual sequences in FASTA format (.fna) for analysis.</p>
+              <a href="#" class="service-link" title="Learn More">Learn More</a>
+            </div>
+          </div>
+
+          <div class="service-item" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-icon-wrapper">
+              <i class="bi bi-bar-chart-line"></i>
+            </div>
+            <div class="service-info">
+              <h4>Trimer Feature Extraction</h4>
+              <p>Automatically compute 3-mer (trimer) frequencies from gene sequences to feed the AI model.</p>
+              <a href="#" class="service-link" title="Learn More">Learn More</a>
+            </div>
+          </div>
+
+          <div class="service-item" data-aos="fade-up" data-aos-delay="600">
+            <div class="service-icon-wrapper">
+              <i class="bi bi-check-circle"></i>
+            </div>
+            <div class="service-info">
+              <h4>Prediction Results</h4>
+              <p>Get clear, confidence-based predictions for pathogenic E.coli strains, ready for research or reporting.</p>
+              <a href="#" class="service-link" title="Learn more">Learn More</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Specialty Cards Grid -->
+    <div class="specialties-grid" data-aos="fade-up" data-aos-delay="300">
+      <div class="row align-items-center">
+
+        <div class="col-lg-3 col-md-6">
+          <div class="specialty-card">
+            <div class="specialty-image">
+              <img src="{{ url_for('static', filename='img/health/accur.png') }}" alt="High Accuracy" class="img-fluid" loading="lazy" title="High accuracy">
+            </div>
+            <div class="specialty-content">
+              <h5>High Accuracy Predictions</h5>
+              <span>AI model achieves >95% accuracy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="specialty-card">
+            <div class="specialty-image">
+              <img src="{{ url_for('static', filename='img/health/sequen.png') }}" alt=" Analysis" class="img-fluid" loading="lazy" title="Analysis">
+            </div>
+            <div class="specialty-content">
+              <h5> Sequence Analysis</h5>
+              <span>Upload sequences at once for faster research workflows</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="specialty-card">
+            <div class="specialty-image">
+              <img src="{{ url_for('static', filename='img/health/researchimg.png') }}" alt="Research Insights" class="img-fluid" loading="lazy" title="Research Insights">
+            </div>
+            <div class="specialty-content">
+              <h5>Research & Insights</h5>
+              <span>Export results for laboratory research or academic studies</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="specialty-card">
+            <div class="specialty-image">
+              <img src="{{ url_for('static', filename='img/health/dashbimg5.png') }}" alt="Interactive Dashboard" class="img-fluid" loading="lazy" title="Dashboard">
+            </div>
+            <div class="specialty-content">
+              <h5>Interactive Dashboard</h5>
+              <span>Visualize prediction results with charts and confidence metrics</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</section><!-- /Featured Services Section -->
+
+    <!-- Find A Doctor Section -->
+   <section id="find-a-doctor" class="find-a-doctor section pt-0">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h3>Explore E.coli Sequences</h3>
+    <!-- <p>Search, view, and analyze sample gene sequences or reference genomes from trusted sources like NCBI.</p> -->
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <!-- Search Section -->
+    <!-- <div class="row justify-content-center mb-5" data-aos="fade-up" data-aos-delay="200">
+      <div class="col-lg-8 text-center">
+        <div class="search-section">
+          <h3 class="search-title">Search Gene or Strain</h3>
+          <p class="search-subtitle">Find sequences to test and compare using our AI prediction tool.</p>
+          <form class="search-form" action="#!" method="get">
+            <div class="search-input-group">
+              <div class="input-wrapper">
+                <i class="bi bi-search"></i>
+                <input type="text" class="form-control" name="gene_name" placeholder="Enter gene or strain name">
+              </div>
+              <div class="select-wrapper">
+                <i class="bi bi-gear"></i>
+                <select class="form-select" name="sequence_type">
+                  <option value="">All Types</option>
+                  <option value="pathogenic">Pathogenic Strains</option>
+                  <option value="non-pathogenic">Non-Pathogenic Strains</option>
+                  <option value="plasmid">Plasmid Sequences</option>
+                  <option value="3-mer">3-mer Features</option>
+                </select>
+              </div>
+              <button type="submit" class="search-btn">
+                <i class="bi bi-search"></i>
+                Search Sequence
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- Sequence Profiles (Using same classes as doctor profiles) -->
+    <div class="doctors-grid mt-0" data-aos="fade-up" data-aos-delay="300">
+
+      <div class="doctor-profile" data-aos="zoom-in" data-aos-delay="100">
+        <div class="profile-header">
+          <div class="doctor-avatar">
+            <img src="{{ url_for('static', filename='img/health/E.colipred.png') }}" alt="E.coli K12" class="img-fluid" title="E.coli K12">
+          </div>
+          <div class="doctor-details">
+            <h4>Strain: K12</h4>
+            <span class="specialty-tag">Non-Pathogenic Reference</span>
+            <div class="experience-info">
+              <i class="bi bi-link-45deg"></i>
+              <a href="https://www.ncbi.nlm.nih.gov/nuccore/NC_000913.3" target="_blank" title="NCBI Entry">NCBI Entry </a>
+            </div>
+          </div>
+        </div>
+        <div class="rating-section">
+          <span class="rating-score">3-mer: Available</span>
+        </div>
+        <div class="action-buttons">
+          <a href="{{ url_for('static', filename='files/gene.fna') }}" 
+   class="btn-primary" download title="Download">
+   Download
+</a>
+        </div>
+      </div>
+
+      <div class="doctor-profile" data-aos="zoom-in" data-aos-delay="200">
+        <div class="profile-header">
+          <div class="doctor-avatar">
+            <img src="{{ url_for('static', filename='img/health/E.colioh.png') }}" alt="E.coli O157:H7" class="img-fluid" title="E.coli O157:H7">
+          </div>
+          <div class="doctor-details">
+            <h4>Strain: O157:H7</h4>
+            <span class="specialty-tag">Pathogenic Reference</span>
+            <div class="experience-info">
+              <i class="bi bi-link-45deg"></i>
+              <a href="https://www.ncbi.nlm.nih.gov/nuccore/NC_002695.1" target="_blank" title="NCBI Entry">NCBI Entry</a>
+            </div>
+          </div>
+        </div>
+        <div class="rating-section">
+          <span class="rating-score">3-mer: Available</span>
+        </div>
+        <div class="action-buttons">
+            <a href="{{ url_for('static', filename='files/gene1.fna') }}" 
+   class="btn-primary" download title="Download">
+   Download
+</a>
+        </div>
+      </div>
+      <div class="doctor-profile" data-aos="zoom-in" data-aos-delay="100">
+        <div class="profile-header">
+          <div class="doctor-avatar">
+            <img src="{{ url_for('static', filename='img/health/img3common.png') }}" alt="E.coli K12" class="img-fluid" title="Common">
+          </div>
+          <div class="doctor-details">
+            <h4>Strain: Common</h4>
+            <span class="specialty-tag">Common Reference</span>
+            <div class="experience-info">
+              <i class="bi bi-link-45deg"></i>
+              <a href="https://www.ncbi.nlm.nih.gov/nuccore/NC_000913.3" target="_blank" title="NCBI Entry">NCBI Entry</a>
+            </div>
+          </div>
+        </div>
+        <div class="rating-section">
+          <span class="rating-score">3-mer: Available</span>
+        </div>
+        <div class="action-buttons">
+            <a href="{{ url_for('static', filename='files/gene2.fna') }}" 
+   class="btn-primary" download title="Download">
+   Download
+</a>
+        </div>
+      </div>
+      <!-- {{ url_for('static', filename='sample_data/K12.fna') }} -->
+      <!-- Add more sequence cards as needed -->
+
+    </div>
+
+    <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="400">
+      <a href="#" class="btn-view-all" title="View Sequences">
+        View All Sequences
+        <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+
+  </div>
+
+</section><!-- /Find A Doctor Section -->
+
+    <!-- Call To Action Section -->
+   <section id="call-to-action" class="call-to-action section light-background">
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="hero-content">
+      <div class="row align-items-center">
+
+        <!-- Left Column: Hero Text -->
+        <div class="col-lg-6">
+          <div class="content-wrapper" data-aos="fade-up" data-aos-delay="200">
+            <h3>AI-Powered E.coli Disease Prediction</h3>
+            <p>Analyze and predict the pathogenic potential of E.coli strains using our advanced AI platform. Explore sample genomes, reference sequences, and predictive insights with ease.</p>
+
+            <div class="cta-wrapper">
+              <a href="#" class="primary-cta" title="analyze Sequence">
+                <span>Analyze Sequence</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+              <a href="#" class="secondary-cta" title="Explore Data">
+                <span>Explore Sample Data</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Image -->
+        <div class="col-lg-6">
+          <div class="image-container" data-aos="fade-left" data-aos-delay="300">
+           <img src="{{ url_for('static', filename='img/health/resandanalysis.png') }}" 
+     alt="E.coli Analysis" 
+     class="img-fluid" title="Analysis">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features-section">
+      <div class="row g-0">
+
+        <div class="col-lg-4">
+          <div class="feature-block py-0" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-icon">
+              <i class="bi bi-gear"></i>
+            </div>
+            <h3>AI Prediction Engine</h3>
+            <p>Leverages 3-mer gene patterns to predict pathogenicity of E.coli strains accurately and efficiently.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="feature-block py-0" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-icon">
+              <i class="bi bi-link-45deg"></i>
+            </div>
+            <h3>NCBI Reference Access</h3>
+            <p>Quickly explore and compare sequences using NCBI database references for reliable genomic information.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="feature-block py-0" data-aos="fade-up" data-aos-delay="400">
+            <div class="feature-icon">
+              <i class="bi bi-download"></i>
+            </div>
+            <h3>Download & Analyze</h3>
+            <p>Download sample genomes and analyze them locally or within our platform for detailed sequence insights.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Contact / Support Section -->
+    <!-- <div class="contact-block">
+      <div class="row">
+
+        <div class="col-lg-8">
+          <div class="contact-content" data-aos="fade-up" data-aos-delay="200">
+            <h2>Need Help with Sequence Analysis?</h2>
+            <p>Our support team is ready to assist with sequence uploads, predictive analysis, or interpreting results.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="contact-actions" data-aos="fade-up" data-aos-delay="300">
+            <a href="mailto:ecoli_support@example.com" class="emergency-call">
+              <i class="bi bi-envelope"></i>
+              <span>ecoli_support@example.com</span>
+            </a>
+            <a href="#" class="contact-link">Request Sample Data</a>
+          </div>
+        </div>
+
+      </div>
+    </div> -->
+
+  </div>
+
+</section><!-- /Call To Action Section -->
+
+  </main>
+
+  <footer id="footer" class="footer-16 footer position-relative">
+
+  <div class="container">
+
+    <div class="footer-main" data-aos="fade-up" data-aos-delay="100">
+      <div class="row align-items-start">
+
+        <div class="col-lg-5">
+          <div class="brand-section">
+            <a href="#" class="logo d-flex align-items-center mb-4" title="Ecolyze">
+              <span class="sitename">Ecolyze</span>
+            </a>
+            <p class="brand-description">
+              AI-based system for detecting E.coli disease using DNA sequence analysis 
+              and machine learning techniques for accurate prediction and research insights.
+            </p>
+
+            <!-- <div class="contact-info mt-5">
+              <div class="contact-item">
+                <i class="bi bi-cpu"></i>
+                <span>Machine Learning Model: XGBoost</span>
+              </div>
+              <div class="contact-item">
+                <i class="bi bi-activity"></i>
+                <span>DNA Pattern & Trimer Analysis</span>
+              </div>
+              <div class="contact-item">
+                <i class="bi bi-database"></i>
+                <span>Dataset-driven Prediction System</span>
+              </div>
+            </div> -->
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="footer-nav-wrapper">
+            <div class="row">
+
+              <div class="col-6 col-lg-3">
+                <div class="nav-column">
+                  <h6>Project</h6>
+                  <nav class="footer-nav">
+                    <a href="#" title="Home">Home</a>
+                    <a href="#" title="About">About</a>
+                    <a href="#" title="Prediction">Prediction</a>
+                    <a href="#" title="Dataset">Dataset</a>
+                    <a href="#" title="Results">Results</a>
+                  </nav>
+                </div>
+              </div>
+
+              <div class="col-6 col-lg-3">
+                <div class="nav-column">
+                  <h6>Analysis</h6>
+                  <nav class="footer-nav">
+                    <a href="#" title="DNA Analysis">DNA Analysis</a>
+                    <a href="#" title="Model Details">Model Details</a>
+                    <a href="#" title="Accuracy">Accuracy</a>
+                    <a href="#" title="Visualization">Visualization</a>
+                    <a href="#" title="Data Info">Data Info</a>
+                  </nav>
+                </div>
+              </div>
+
+              <div class="col-6 col-lg-3">
+                <div class="nav-column">
+                  <h6>Resources</h6>
+                  <nav class="footer-nav">
+                    <a href="#" title="E.coli Info">E.coli Info</a>
+                    <a href="#" title="DNA Sequencing">DNA Sequencing</a>
+                    <a href="#" title="AI in Healthcare">AI in Healthcare</a>
+                    <a href="#" title="Research Papers">Research Papers</a>
+                    <a href="#" title="Documentation">Documentation</a>
+                  </nav>
+                </div>
+              </div>
+
+              <div class="col-6 col-lg-3">
+                <div class="nav-column">
+                  <h6>Support</h6>
+                  <nav class="footer-nav">
+                    <a href="#" title="Contact">Contact</a>
+                    <a href="#" title="Help">Help</a>
+                    <a href="/faq" title="FAQ">FAQ</a>
+                    <a href="#" title="Guide">Guide</a>
+                    <a href="#" title="Feedback">Feedback</a>
+                  </nav>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- <div class="footer-bottom">
+    <div class="container">
+      <div class="bottom-content" data-aos="fade-up" data-aos-delay="300">
+        <div class="row align-items-center">
+
+          <div class="col-lg-6">
+            <div class="copyright">
+              <p>© <span class="sitename">Ecolyze</span>. All rights reserved.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="legal-links">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+              <a href="#">Project Documentation</a>
+              <div class="credits">
+                Designed for Final Year Project | AI-based E.coli Prediction System
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+</footer>
+
+  <!-- Scroll Top -->
+  <a href="#!" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" title="scroll"><i
+      class="bi bi-arrow-up-short" ></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+ <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/aos/aos.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/glightbox/js/glightbox.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/purecounter/purecounter_vanilla.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+
+</html>

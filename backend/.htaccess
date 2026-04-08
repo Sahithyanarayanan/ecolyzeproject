@@ -1,0 +1,15 @@
+RewriteEngine On
+RewriteBase /sahithya/
+
+# Landing page → templates/index.html
+RewriteRule ^$ templates/index.html [L]
+
+# /ecolyze → ecolyze/template/index.html
+RewriteRule ^ecolyze/?$ ecolyze/template/index.html [L]
+
+# Allow existing files and directories
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Optional fallback (all other routes → templates/index.html)
+RewriteRule ^ templates/index.html [L]
